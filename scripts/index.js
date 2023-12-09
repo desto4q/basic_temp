@@ -1,7 +1,7 @@
 let nav_bar = document.querySelector(".nav_links")
 let side_nav = document.querySelector(".side_nav")
 let nav_btn = document.querySelector(".nav_btn")
-
+let side_nav_content =document.querySelector(".side_nav_links")
 
 let div_maker = (type, content) => {
     let div = document.createElement(`${type}`)
@@ -9,11 +9,18 @@ let div_maker = (type, content) => {
     return div
 }
 
-for (let i in links) {
-    let a = div_maker("a", links[i].name)
-    a.setAttribute("href", "#")
-    nav_bar.append(a)
+let appender = (parent) => {
+    for (let i in links) {
+        let a = div_maker("a", links[i].name)
+        a.setAttribute("href", "#")
+        parent.append(a)    
+    }
 }
+
+appender(nav_bar)
+appender(side_nav_content)
+
+
 
 
 let side_nav_activator = () => {
